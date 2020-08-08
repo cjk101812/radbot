@@ -1,0 +1,14 @@
+<div class="message-list">
+  <div class="card">
+    <div class="card-header">
+      Chat
+    </div>
+    <div class="card-body" id="chat-list">
+      <div class="message" *ngFor="let message of orderedMessages(messages)" [ngClass]="{'mod': message.mod === true || message.display_name === 'ThatsRadCullen' }">
+        <div class="user">{{ message.display_name }} <span class="text-muted">at {{ message.tmi_sent_ts | date:'shortTime' }}</span></div>
+        <div class="text">{{ message.message }}</div>
+      </div>
+      <div class="text-center text-muted mb-2">Chat started {{ startTime | date:'full' }}</div>
+    </div>
+  </div>
+</div>

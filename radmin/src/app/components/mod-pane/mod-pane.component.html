@@ -1,0 +1,55 @@
+<div class="mod-container">
+  <div class="card">
+    <div class="card-header">
+      Shout Out User
+    </div>
+    <div class="card-body" id="chat-list">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username Shoutout" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <button type="button" class="btn btn-primary" (click)="sendShoutout('thatsradcullen')">Send Shoutout</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      Send Message as Bot
+    </div>
+    <div class="card-body" id="chat-list">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Message text..." [(ngModel)]="botMessage" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <button type="button" class="btn btn-primary outline" (click)="sendMessageAsBot(botMessage)">Send Announcement</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      Timeout User
+    </div>
+    <div class="card-body" id="chat-list">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username to Timeout" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <button type="button" class="btn btn-warning">You're in Timeout</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      Ban User
+    </div>
+    <div class="card-body" id="chat-list">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username to Ban" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <button type="button" class="btn btn-danger">Ban Hammer</button>
+    </div>
+  </div>
+</div>

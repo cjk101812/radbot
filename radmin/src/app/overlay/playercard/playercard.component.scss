@@ -1,0 +1,56 @@
+.card {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 18rem;
+  background-color: #222;
+  border: 5px solid #00D68F;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5),
+    10px 10px 15px rgba(0, 0, 0, 0.5),
+    -1px -1px 30px rgba(0, 0, 0, 0.2);
+
+  .name {
+    padding: 3px 8px 0px;
+    color: #FFF;
+    font-family: 'Bangers';
+    font-size: 1.3em;
+
+    .level {
+      font-size: .7em;
+      text-align: right;
+    }
+  }
+
+  .user-image {
+    text-align: center;
+
+    img {
+      width: 60%;
+      border: 3px solid #00D68F;
+      border-radius: 5px;
+    }
+  }
+
+  .details {
+    padding: 1em 1em 0;
+
+    .stat {
+      margin-bottom: 1em;
+      color: #FFF;
+
+      .title {
+        font-weight: bold;
+        font-family: 'Bangers';
+      }
+
+      .value {
+        text-align: right;
+      }
+
+      .description {
+        font-size: .8em;
+      }
+    }
+  }
+}

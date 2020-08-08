@@ -1,0 +1,29 @@
+.card {
+  border: none;
+  margin-left: 1em;
+  .card-header {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #FFF;
+  }
+  .card-body {
+    background-color: rgba(34, 34, 34, 0.9);
+    height: 80vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    .message {
+      margin-bottom: 5px;
+      padding: 1em;
+      border-left: .5em solid #51146F;
+      border-radius: .5em;
+      background-color: #000;
+      color: #FFF;
+      &.mod {
+        border-left: .5em solid #00D68F;
+      }
+      .user {
+        font-weight: bold;
+      }
+    }
+  }
+}

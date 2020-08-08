@@ -1,0 +1,16 @@
+<div class="card" *ngIf="cardDetails" [@inOutAnimation]>
+  <div class="name row">
+    <div class="col-md-9">{{ cardDetails.display_name }}</div>
+    <div class="col-md-3 level">Lvl. 99</div>
+  </div>
+  <div class="user-image">
+    <img [src]="cardDetails.logo" alt="">
+  </div>
+  <div class="details">
+    <div class="stat row" *ngFor="let stat of cardDetails.stats">
+      <div class="title col-md-9">{{ stat.stat }}</div>
+      <div class="value col-md-3">{{ stat.value }}</div>
+      <div class="description col-md-12">{{ stat.description }}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.card {
+  border: none;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  .card-header {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #FFF;
+  }
+  .card-body {
+    background-color: rgba(34, 34, 34, 0.9);
+    .message {
+      margin-bottom: 5px;
+      padding: 1em;
+      border-left: .5em solid #51146F;
+      border-radius: .5em;
+      background-color: #000;
+      color: #FFF;
+      &.mod {
+        border-left: .5em solid #00D68F;
+      }
+      .user {
+        font-weight: bold;
+      }
+    }
+    .btn-primary {
+      background-color: #00D68F;
+      border-color: #00D68F;
+      &:active, &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(38, 255, 183, 0.5);
+      }
+    }
+  }
+}

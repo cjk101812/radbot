@@ -1,0 +1,25 @@
+<div class="battle-container container">
+  <div class="header">
+    Next Battle
+    <span class="timer" *ngIf="playerOne && playerTwo">Battle Starting!</span>
+  </div>
+  <div class="contestants row">
+    <div *ngIf="playerOne" class="player col-md-5" [@inOutAnimation]>
+      {{ playerOne.display_name }}
+      <span *ngIf="winner === 'playerOne'" class="green-text"><br />WINNER!!</span>
+    </div>
+    <div *ngIf="playerOne" class="player col-md-2" [@inOutAnimation]>
+      VS.
+    </div>
+    <div *ngIf="playerTwo" class="player col-md-5" [@inOutAnimation]>
+      {{ playerTwo.display_name }}
+      <span *ngIf="winner === 'playerTwo'" class="green-text"><br />WINNER!!</span>
+    </div>
+    <div *ngIf="!playerOne && !playerTwo" class="player col-md-12" [@inOutAnimation]>
+      !battle to join the next battle
+    </div>
+    <div *ngIf="playerOne && !playerTwo" class="player col-md-5" [@inOutAnimation]>
+      !battle to join
+    </div>
+  </div>
+</div>

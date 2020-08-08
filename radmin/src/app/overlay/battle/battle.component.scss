@@ -1,0 +1,85 @@
+.battle-container {
+  background: linear-gradient(270deg, #00d68f, #51146f);
+  background-size: 400% 400%;
+  -webkit-animation: GradientWave 10s ease infinite;
+  -moz-animation: GradientWave 10s ease infinite;
+  animation: GradientWave 10s ease infinite;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5),
+    10px 10px 15px rgba(0, 0, 0, 0.5),
+    -1px -1px 30px rgba(0, 0, 0, 0.2);
+  color: #FFF;
+  font-family: 'Bangers';
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 24rem;
+  border-radius: 10px;
+  font-size: 1.2em;
+
+  .header {
+    padding: .5em;
+
+    .timer {
+      float: right;
+      color: #f1f1f1b7;
+    }
+  }
+
+  .contestants {
+    font-size: .9em;
+    padding: .5em;
+    background-color: rgba(34, 34, 34, 0.87);
+    border-radius: 0 0 9px 9px;
+
+    .player {
+      padding: 0;
+      text-align: center;
+    }
+
+    .green-text {
+      color: #00D68F;
+    }
+  }
+}
+
+@-webkit-keyframes GradientWave {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes GradientWave {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes GradientWave {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
