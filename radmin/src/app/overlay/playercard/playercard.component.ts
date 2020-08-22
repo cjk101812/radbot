@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { ToastrService } from 'ngx-toastr';
+import { Howl } from 'howler';
 import {
   trigger,
   state,
@@ -30,6 +31,7 @@ import AvailableCardOptions from './available-stats';
 })
 export class PlayercardComponent implements OnInit {
   public cardDetails: any = null;
+  public currentColor: string = null;
   constructor(public socket: Socket, private toastr: ToastrService) {}
 
   ngOnInit() {
@@ -55,6 +57,10 @@ export class PlayercardComponent implements OnInit {
       setTimeout(() => {
         this.cardDetails = null;
       }, 10000);
+    });
+
+    this.socket.on('color_change', (hex) => {
+      this.currentColor = hex;
     });
   }
 }

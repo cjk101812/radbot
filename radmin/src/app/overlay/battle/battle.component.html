@@ -1,9 +1,10 @@
 <div class="battle-container container">
   <div class="header">
     Next Battle
+    <span class="timer" *ngIf="!playerOne && !playerTwo">!battle to join</span>
     <span class="timer" *ngIf="playerOne && playerTwo">Battle Starting!</span>
   </div>
-  <div class="contestants row">
+  <div class="contestants row" *ngIf="playerOne">
     <div *ngIf="playerOne" class="player col-md-5" [@inOutAnimation]>
       {{ playerOne.display_name }}
       <span *ngIf="winner === 'playerOne'" class="green-text"><br />WINNER!!</span>

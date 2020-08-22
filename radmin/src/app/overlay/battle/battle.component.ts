@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import {
   trigger,
   state,
@@ -48,8 +48,6 @@ export class BattleComponent implements OnInit {
         setTimeout(() => {
           const winner = Math.floor(Math.random() * Math.floor(2));
           this.winner = winner === 1 ? 'playerOne' : 'playerTwo';
-          const audio = new Audio();
-          audio.src = '../../assets/sounds/champions.mp3';
           const sound = new Howl({
             src: ['../../assets/sounds/champions.mp3'],
             loop: false,

@@ -4,6 +4,7 @@ const io = require('socket.io')(http);
 const dotenv = require('dotenv').config();
 const TwitchBot = require('twitch-bot');
 const { getUserDetails } = require('./helpers/twitch-users');
+const { changeLightColor, lightParty, pickRandomHex } = require('./helpers/lifx-controls');
 
 const usersInChat = [];
 
@@ -32,6 +33,23 @@ Bot.on('message', async (chatter) => {
   }
   if (chatter.message === '!battle') {
     io.emit('radbot_battle', chatter);
+  }
+  const splitMessage = chatter.message.split(' ');
+  if (splitMessage[0] === '!light') {
+    if (splitMessage[1] === 'party') {
+      lightParty();
+    } else if (splitMessage[1] === 'random') {
+      const newColor = pickRandomHex();
+      io.emit('color_change', newColor);
+      changeLightColor(newColor);
+      Bot.say("Beep boop beep. Changing the lights.");
+    } else if (splitMessage[1]) {
+      io.emit('color_change', splitMessage[1]);
+      changeLightColor(splitMessage[1]);
+      Bot.say("Beep boop beep. Changing the lights.");
+    } else {
+      Bot.say("Pass in a valid hex color or I ain't doin' anything.");
+    }
   }
   if (
     chatter.message.toLowerCase().includes('cant') ||
@@ -65,6 +83,7 @@ io.on('connection', (socket) => {
   socket.on('radbot_battle_winner', (player) => {
     if (player !== null) {
       io.emit('radbot_playercard', player);
+      lightParty();
       const message = `Congrats ${player.display_name}! You won the battle!`;
       Bot.say(message);
     }

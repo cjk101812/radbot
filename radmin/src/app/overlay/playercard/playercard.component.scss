@@ -9,7 +9,6 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5),
     10px 10px 15px rgba(0, 0, 0, 0.5),
     -1px -1px 30px rgba(0, 0, 0, 0.2);
-
   .name {
     padding: 3px 8px 0px;
     color: #FFF;
@@ -34,23 +33,27 @@
 
   .details {
     padding: 1em 1em 0;
-
     .stat {
       margin-bottom: 1em;
       color: #FFF;
-
       .title {
         font-weight: bold;
         font-family: 'Bangers';
       }
-
       .value {
         text-align: right;
       }
-
       .description {
         font-size: .8em;
       }
     }
   }
+}
+.active-color {
+  font-family: 'Bangers';
+  position: absolute;
+  right: 1em;
+  bottom: 12em;
+  font-size: 2em;
+  color: #D8D8D8;
 }
