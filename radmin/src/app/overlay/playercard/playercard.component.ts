@@ -32,6 +32,8 @@ import AvailableCardOptions from './available-stats';
 export class PlayercardComponent implements OnInit {
   public cardDetails: any = null;
   public currentColor: string = null;
+  public qnaList: any[] = [];
+  public activeQuestion: any;
   constructor(public socket: Socket, private toastr: ToastrService) {}
 
   ngOnInit() {
@@ -61,6 +63,25 @@ export class PlayercardComponent implements OnInit {
 
     this.socket.on('color_change', (hex) => {
       this.currentColor = hex;
+    });
+
+    this.socket.on('new_qna', (question) => {
+      const sound = new Howl({
+        src: ['../../assets/sounds/mail.mp3'],
+        loop: false,
+        volume: 0.03,
+      });
+      sound.play();
+      this.qnaList.push(question);
+    });
+
+    this.socket.on('activate_qna', (qId: number) => {
+      this.activeQuestion = this.qnaList[qId];
+      this.qnaList.splice(qId, 1);
+    });
+
+    this.socket.on('remove_qna', (qId) => {
+      this.qnaList.splice(qId, 1);
     });
   }
 }

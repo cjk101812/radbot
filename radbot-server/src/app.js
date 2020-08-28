@@ -51,6 +51,23 @@ Bot.on('message', async (chatter) => {
       Bot.say("Pass in a valid hex color or I ain't doin' anything.");
     }
   }
+  if (splitMessage[0] === '!qnaask') {
+    const question = splitMessage.splice(1, splitMessage.length).join(' ');
+    io.emit('new_qna', { user: chatter, question });
+  }
+  if (splitMessage[0] === '!qna' && chatter.display_name === 'ThatsRadCullen') {
+    if (splitMessage[1] === 'start') {
+      Bot.say("Working on the start functionality.");
+    } else if (splitMessage[1] === 'activate') {
+      // !qna activate 1
+      const idToRemove = splitMessage[2];
+      io.emit('activate_qna', idToRemove);
+    } else if (splitMessage[1] === 'remove') {
+      // !qna remove 1
+      const idToRemove = splitMessage[2];
+      io.emit('remove_qna', idToRemove);
+    }
+  }
   if (
     chatter.message.toLowerCase().includes('cant') ||
     chatter.message.toLowerCase().includes("can't")

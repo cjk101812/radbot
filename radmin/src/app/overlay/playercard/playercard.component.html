@@ -17,3 +17,16 @@
 <div class="active-color">
   Light Color: <span [ngStyle]="{'color': this.currentColor }">{{ this.currentColor || "#anyHex" }}</span>
 </div>
+<div class="qna-list" *ngIf="qnaList.length > 0 || activeQuestion">
+  <div class="header">
+    Thats Rad Q&A
+  </div>
+  <div class="active" *ngIf="activeQuestion">
+    <div class="title">Currently discussing:</div>
+    <div>{{ activeQuestion.question }}</div>
+    <div class="asked-by">Asked by {{ activeQuestion.user.display_name }}</div>
+  </div>
+  <div class="list" *ngFor="let qna of qnaList">
+    {{ qna.user.display_name }}: {{ qna.question }}
+  </div>
+</div>
