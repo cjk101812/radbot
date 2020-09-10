@@ -51,11 +51,6 @@ export class PlayercardComponent implements OnInit {
           Math.floor(Math.random() * AvailableCardOptions.length)
         ]
       );
-      this.cardDetails.stats.push(
-        AvailableCardOptions[
-          Math.floor(Math.random() * AvailableCardOptions.length)
-        ]
-      );
       setTimeout(() => {
         this.cardDetails = null;
       }, 10000);

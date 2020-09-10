@@ -16,7 +16,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { ModPaneComponent } from './components/mod-pane/mod-pane.component';
 import { DashboardComponent } from './radmin/dashboard/dashboard.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:3002', options: {} };
 
 @NgModule({
   declarations: [

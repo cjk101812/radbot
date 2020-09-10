@@ -10,7 +10,7 @@ import { ChatComponent } from './chat/chat.component';
 import { PlayercardComponent } from './playercard/playercard.component';
 import { BattleComponent } from './battle/battle.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:3002', options: {} };
 
 @NgModule({
   declarations: [

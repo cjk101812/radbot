@@ -7,6 +7,9 @@
     <img [src]="cardDetails.logo" alt="">
   </div>
   <div class="details">
+    <div class="stat row col-md-12">
+      {{ cardDetails.description }}
+    </div>
     <div class="stat row" *ngFor="let stat of cardDetails.stats">
       <div class="title col-md-9">{{ stat.stat }}</div>
       <div class="value col-md-3">{{ stat.value }}</div>
