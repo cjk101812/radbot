@@ -15,7 +15,7 @@ const setupPubSub = async () => {
       "nonce": "thatsradredeemnonce",
       "data": {
         "topics": ["channel-points-channel-v1.457532056"],
-        "auth_token": process.env.TWITCH_SUB_CLIENT
+        "auth_token": process.env.TWITCH_USER_OAUTH
       }
     }));
     TwitchPubSubSocket.send(JSON.stringify({
@@ -23,7 +23,7 @@ const setupPubSub = async () => {
       "nonce": "thatsradsubnonce",
       "data": {
         "topics": ["channel-subscribe-events-v1.457532056"],
-        "auth_token": process.env.TWITCH_SUB_CLIENT
+        "auth_token": process.env.TWITCH_USER_OAUTH
       }
     }));
   };

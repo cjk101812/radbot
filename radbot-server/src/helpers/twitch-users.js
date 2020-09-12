@@ -7,7 +7,7 @@ const getUserDetails = async (userId) => {
     {
       headers: {
         'Client-ID': process.env.TWITCH_BOT_CLIENT,
-        Authorization: 'Bearer ' + process.env.TWITCH_BOT_OAUTH,
+        Authorization: 'Bearer ' + process.env.TWITCH_USER_OAUTH,
         Accept: 'application/vnd.twitchtv.v5+json',
       },
     },
@@ -29,7 +29,7 @@ const getUserDetailsByName = async (username) => {
     {
       headers: {
         'Client-ID': process.env.TWITCH_BOT_CLIENT,
-        Authorization: 'Bearer ' + process.env.TWITCH_BOT_OAUTH,
+        Authorization: 'Bearer ' + process.env.TWITCH_USER_OAUTH,
         Accept: 'application/vnd.twitchtv.v5+json',
       },
     },
@@ -46,7 +46,7 @@ const getChannelDetails = async (userId) => {
     'https://api.twitch.tv/kraken/channels/457532056',
     {
       headers: {
-        Authorization: 'OAuth ' + process.env.TWITCH_BOT_OAUTH,
+        Authorization: 'OAuth ' + process.env.TWITCH_USER_OAUTH,
         Accept: 'application/vnd.twitchtv.v5+json',
       },
     },
@@ -65,7 +65,7 @@ const getNewFollowers = async (userId) => {
     {
       headers: {
         'Client-ID': process.env.TWITCH_BOT_CLIENT,
-        Authorization: 'Bearer ' + process.env.TWITCH_BOT_OAUTH,
+        Authorization: 'Bearer ' + process.env.TWITCH_USER_OAUTH,
         Accept: 'application/vnd.twitchtv.v5+json',
       },
     },

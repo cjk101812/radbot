@@ -119,7 +119,6 @@ Bot.on('message', async (chatter) => {
     const username = splitMessage[1];
     const userDetails = await getUserDetailsByName(username);
     if (userDetails.length > 0){
-      console.log(userDetails);
       const cardDetails = {
         ...userDetails[0],
         logo: userDetails[0].profile_image_url,
