@@ -11,6 +11,21 @@ const { analyzeString, toggleLightMode } = require('./helpers/nlp');
 const usersInChat = [];
 let moodRingEnabled = false;
 
+const twitchFriends = {
+  'codehuJD': {
+    'color': 'yellow',
+    'display_name': 'CodeHustle'
+  },
+  'rad': {
+    'color': 'green',
+    'display_name': 'THATSRAD'
+  },
+  'PogChamp': {
+    'color': 'white',
+    'display_name': 'THATSRAD'
+  }
+};
+
 // Twitch Bot Listener Setup
 const Bot = new TwitchBot({
   username: 'thatsradbot',
@@ -65,8 +80,16 @@ Bot.on('message', async (chatter) => {
         changeLightColor(newColor);
         Bot.say("Beep boop beep. Changing the lights.");
       } else if (splitMessage[1]) {
-        io.emit('color_change', splitMessage[1]);
-        changeLightColor(splitMessage[1]);
+        if (twitchFriends[splitMessage[1]]) {
+          lightParty();
+          setTimeout(() => {
+            io.emit('color_change', twitchFriends[splitMessage[1]].color);
+            changeLightColor(twitchFriends[splitMessage[1]].color);
+          }, 5000);
+        } else {
+          changeLightColor(splitMessage[1]);
+          io.emit('color_change', splitMessage[1]);
+        }
         Bot.say("Beep boop beep. Changing the lights.");
       } else {
         Bot.say("Pass in a valid hex color or I ain't doin' anything.");
@@ -116,7 +139,7 @@ Bot.on('message', async (chatter) => {
 
 
   if (splitMessage[0] === '!so' && chatter.display_name === 'ThatsRadCullen') {
-    const username = splitMessage[1];
+    const username = splitMessage[1].substring(1);
     const userDetails = await getUserDetailsByName(username);
     if (userDetails.length > 0){
       const cardDetails = {
