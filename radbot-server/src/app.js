@@ -152,6 +152,22 @@ Bot.on('message', async (chatter) => {
       Bot.say(`Try typing their name in right, boss.`);
     }
   }
+
+  if (splitMessage[0] === '!meme') {
+    const memeDetails = {
+      meme: splitMessage[1],
+      topText: splitMessage[2] || '',
+      bottomText: splitMessage[3] || '',
+      author: chatter.display_name
+    };
+    Bot.say(`Check out your meme in the top left!`);
+    io.emit('show_meme', memeDetails);
+  }
+  if (splitMessage[0] === '!memehelp') {
+    Bot.say(`CREATE A CUSTOM MEME! Use the format "!meme {meme_name} {top_text} {bottom_text}" to see it in action. ` +
+    ` Some sample meme names include "buzz", "doge", "saltbae" and a bunch more! the top text and bottom text are just the ` +
+    `words shown on the meme. Make sure you connect words with underscores like_this if you have multiple words`);
+  }
 });
 
 Bot.on('part', (user) => {

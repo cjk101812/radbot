@@ -9,6 +9,7 @@ import { OverlayComponent } from './overlay.component';
 import { ChatComponent } from './chat/chat.component';
 import { PlayercardComponent } from './playercard/playercard.component';
 import { BattleComponent } from './battle/battle.component';
+import { MemeComponent } from './meme/meme.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3002', options: {} };
 
@@ -18,6 +19,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3002', options: {} };
     ChatComponent,
     PlayercardComponent,
     BattleComponent,
+    MemeComponent,
   ],
   imports: [CommonModule, SocketIoModule.forRoot(config), OverlayRoutingModule],
 })

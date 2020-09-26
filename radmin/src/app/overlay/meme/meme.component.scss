@@ -1,0 +1,15 @@
+.meme-container {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 22rem;
+  img {
+    width: 22rem;
+  }
+  .who-made {
+    background-color: #222222;
+    color: #FFFFFF;
+    font-size: 2em;
+    text-align: center;
+  }
+}

@@ -1,0 +1,6 @@
+<div class="meme-container" *ngIf="memeDetails" [@inOutAnimation]>
+  <img [src]="activeMemeUrl" alt="">
+  <div class="who-made">
+    Created by: {{ memeDetails.author }}
+  </div>
+</div>
