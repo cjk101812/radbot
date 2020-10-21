@@ -41,6 +41,15 @@ export class MemeComponent implements OnInit {
         this.memeDetails = null;
       }, 12000);
     });
+
+    this.socket.on('show_fav_meme', (memeDetails: any) => {
+      this.memeDetails = memeDetails;
+      this.activeMemeUrl = `https://api.memegen.link/images/drake/CREATE_YOUR_OWN/ONE_ALREADY_MADE.png`;
+      setTimeout(() => {
+        this.activeMemeUrl = null;
+        this.memeDetails = null;
+      }, 12000);
+    });
   }
 
 }

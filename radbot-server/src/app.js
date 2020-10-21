@@ -7,6 +7,7 @@ const { getUserDetails, getUserDetailsByName } = require('./helpers/twitch-users
 const { changeLightColor, lightParty, pickRandomHex } = require('./helpers/lifx-controls');
 const { setupPubSub } = require('./helpers/pub-sub');
 const { analyzeString, toggleLightMode } = require('./helpers/nlp');
+const { favMemes } = require('./helpers/fav-memes');
 
 const usersInChat = [];
 let moodRingEnabled = false;
@@ -54,6 +55,9 @@ Bot.on('message', async (chatter) => {
 
   const splitMessage = chatter.message.split(' ');
 
+  // ------------------------------------------
+  // LIGHT COMMANDS
+  // ------------------------------------------
   if (splitMessage[0] === '!lightmode' && chatter.display_name === 'ThatsRadCullen') {
     if (splitMessage[1] === 'sentiment') {
       moodRingEnabled = true;
@@ -96,13 +100,14 @@ Bot.on('message', async (chatter) => {
       }
     }
   }
-
   
   // if (chatter.message === '!battle') {
   //   io.emit('radbot_battle', chatter);
   // }
 
-
+  // ------------------------------------------
+  // PLAYERCARD COMMANDS
+  // ------------------------------------------
   if (chatter.message === '!playercard') {
     io.emit('radbot_playercard', chatter);
     Bot.say(
@@ -111,6 +116,9 @@ Bot.on('message', async (chatter) => {
   }
 
 
+  // ------------------------------------------
+  // QNA COMMANDS
+  // ------------------------------------------
   if (splitMessage[0] === '!qnaask') {
     const question = splitMessage.splice(1, splitMessage.length).join(' ');
     io.emit('new_qna', { user: chatter, question });
@@ -130,6 +138,9 @@ Bot.on('message', async (chatter) => {
   }
 
 
+  // ------------------------------------------
+  // CANT COMMANDS
+  // ------------------------------------------
   if (
     chatter.message.toLowerCase().includes('cant') ||
     chatter.message.toLowerCase().includes("can't")
@@ -138,6 +149,9 @@ Bot.on('message', async (chatter) => {
   }
 
 
+  // ------------------------------------------
+  // SHOUTOUT COMMANDS
+  // ------------------------------------------
   if (splitMessage[0] === '!so' && chatter.display_name === 'ThatsRadCullen') {
     const username = splitMessage[1].substring(1);
     const userDetails = await getUserDetailsByName(username);
@@ -146,27 +160,41 @@ Bot.on('message', async (chatter) => {
         ...userDetails[0],
         logo: userDetails[0].profile_image_url,
       };
-      Bot.say(`Go check out ${cardDetails.display_name}'s stream!`);
+      Bot.say(`Go check out ${cardDetails.display_name}'s stream! https://twitch.tv/${cardDetails.display_name}`);
       io.emit('radbot_playercard', cardDetails);
     } else {
       Bot.say(`Try typing their name in right, boss.`);
     }
   }
 
+  
+  // ------------------------------------------
+  // MEME COMMANDS
+  // ------------------------------------------
   if (splitMessage[0] === '!meme') {
-    const memeDetails = {
-      meme: splitMessage[1],
-      topText: splitMessage[2] || '',
-      bottomText: splitMessage[3] || '',
-      author: chatter.display_name
-    };
-    Bot.say(`Check out your meme in the top left!`);
-    io.emit('show_meme', memeDetails);
+    let memeDetails;
+    if (splitMessage[1] === 'fav') {
+      const lookupMeme = favMemes[splitMessage[2]];
+      memeDetails = {
+        ...lookupMeme,
+        author: chatter.display_name
+      }
+      io.emit('show_meme', memeDetails)
+    } else if (splitMessage[1] === 'help') {
+      Bot.say(`CREATE A CUSTOM MEME! Check out https://github.com/cjk101812/radbot/blob/master/RadMemes.md to learn how!`);
+    } else {
+      memeDetails = {
+        meme: splitMessage[1],
+        topText: splitMessage[2] || '',
+        bottomText: splitMessage[3] || '',
+        author: chatter.display_name
+      };
+      Bot.say(`Check out your meme in the top left!`);
+      io.emit('show_meme', memeDetails);
+    }
   }
   if (splitMessage[0] === '!memehelp') {
-    Bot.say(`CREATE A CUSTOM MEME! Use the format "!meme {meme_name} {top_text} {bottom_text}" to see it in action. ` +
-    ` Some sample meme names include "buzz", "doge", "saltbae" and a bunch more! the top text and bottom text are just the ` +
-    `words shown on the meme. Make sure you connect words with underscores like_this if you have multiple words`);
+    Bot.say(`CREATE A CUSTOM MEME! Check out https://github.com/cjk101812/radbot/blob/master/RadMemes.md to learn how!`);
   }
 });
 
